@@ -1,0 +1,23 @@
+<section class="row">
+  <div class="col-4">
+  </div>
+  <div class="col-4">
+    <h1>Page Profil</h1>
+
+    <p>Bienvenue sur la page d'ajout d'un avatar pour le User portant l'id : <%= @user.id %></p>
+    <h3>Avatar actuel</h3>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+    <% else %>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <% end %>
+
+    <div class="d-flex flex-column align-items-center">
+      <h3>Changer ou ajouter un avatar ?</h3>
+      <%= form_tag user_avatars_path(@user), multipart: true do %>
+        <div><%= file_field_tag :avatar %></div>
+        <div><%= submit_tag "Changer l'avatar" %></div>
+      <% end %>
+    </div>
+  </div>
+</section>
